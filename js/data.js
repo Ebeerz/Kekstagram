@@ -37,7 +37,7 @@ const createComment = (index) => ({
 });
 
 const getComments = () =>
-  Array.from({length: getRandomInteger(1,5)}, (commentIndex) => createComment(commentIndex + 1));
+  Array.from({length: getRandomInteger(1,5)}, (_, commentIndex) => createComment(commentIndex + 1));
 
 const createPicture = (index) => ({
   id: index,
@@ -48,6 +48,6 @@ const createPicture = (index) => ({
 });
 
 const getPictures = () =>
-  Array.from({length: 25}, (pictureIndex) => createPicture(pictureIndex+1));
+  Array.from({length: 25}, (_, pictureIndex) => createPicture(pictureIndex+1));
 
 export {getPictures};
