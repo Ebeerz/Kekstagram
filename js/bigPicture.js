@@ -5,7 +5,7 @@ const socialComment = document.querySelector('#comment').content.children[0];
 const pictureCloseButton = bigPicture.querySelector('.big-picture__cancel');
 
 // function for closing popup with ecs keydown
-const onPopupEscKeydown = (evt) => {
+const bigPictureEscKeydown = (evt) => {
   if (isEscapeKey(evt)) {
     evt.preventDefault();
     // eslint-disable-next-line no-use-before-define
@@ -14,7 +14,7 @@ const onPopupEscKeydown = (evt) => {
 };
 
 // function for closing popup with click on close button
-const onPopupClick = () => {
+const onCloseButtonClick = () => {
   // eslint-disable-next-line no-use-before-define
   closeBigPicture();
 };
@@ -47,8 +47,8 @@ const showBigPicture = () => {
 const closeBigPicture = () => {
   bigPicture.classList.add('hidden');
   document.body.classList.remove('modal-open');
-  document.removeEventListener('keydown', onPopupEscKeydown);
-  pictureCloseButton.removeEventListener('click', onPopupClick);
+  document.removeEventListener('keydown', bigPictureEscKeydown);
+  pictureCloseButton.removeEventListener('click', onCloseButtonClick);
 };
 
 // function for rendering popup datas
@@ -65,11 +65,8 @@ const renderBigPictureData = (pictureData) => {
 const addBigPictureHandler = (element, pictureData) => {
   element.addEventListener('click', () => {
     showBigPicture();
-
-    document.addEventListener('keydown', onPopupEscKeydown);
-
-    pictureCloseButton.addEventListener('click', onPopupClick);
-
+    document.addEventListener('keydown', bigPictureEscKeydown);
+    pictureCloseButton.addEventListener('click', onCloseButtonClick);
     renderBigPictureData(pictureData);
   });
 
