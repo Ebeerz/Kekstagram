@@ -14,12 +14,13 @@ const isTextFieldFocused = () =>
 
 // esc keydown close function
 const imgUploadPopupEscKeydown = (evt) => {
-  if (isEscapeKey(evt) && isTextFieldFocused) {
+  if (isEscapeKey(evt) && !isTextFieldFocused) {
     evt.preventDefault();
     // eslint-disable-next-line no-use-before-define
     closeImgUploadPopup();
   }
 };
+
 
 // close button function
 const onCloseButtonClick = () => {
