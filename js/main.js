@@ -1,5 +1,5 @@
-import {getPictures} from './data.js';
-import { imgUploading } from './pictureUpload.js';
-import {renderPictures} from './thumbnail.js';
-renderPictures(getPictures());
+import {getData} from './serverRequests.js';
+import {imgUploading} from './pictureUpload.js';
+
+getData();
 imgUploading();
