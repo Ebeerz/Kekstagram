@@ -66,4 +66,4 @@ const imgUploading = () => {
   });
 };
 
-export {imgUploading};
+export {imgUploading, closeImgUploadPopup};

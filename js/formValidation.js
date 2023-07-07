@@ -1,3 +1,5 @@
+import {postData} from './serverRequests.js';
+import {onSubmitError, onSubmitSuccess} from './formSubmit.js';
 const form = document.querySelector('.img-upload__form');
 const hashtag = document.querySelector('.text__hashtags');
 
@@ -34,7 +36,11 @@ pristine.addValidator(hashtag, validateTags, 'Отредактируйте хе�
 
 const onFormSubmit = (evt) => {
   evt.preventDefault();
-  pristine.validate();
+  const isValid = pristine.validate();
+  if (isValid) {
+    postData(onSubmitSuccess, onSubmitError, new FormData(evt.target));
+    evt.target.reset();
+  }
 };
 
 export {onFormSubmit};
