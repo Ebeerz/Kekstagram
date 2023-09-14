@@ -1,6 +1,6 @@
 import {getData} from './serverRequests.js';
 import {imgUploading} from './pictureUpload.js';
-import { renderPictures } from './thumbnail.js';
+import {managePictures} from './thumbnail.js';
 
-getData(renderPictures);
+getData(managePictures);
 imgUploading();
