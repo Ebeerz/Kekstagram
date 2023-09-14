@@ -2,6 +2,8 @@ import {onFormSubmit} from './formValidation.js';
 import {onEffectChange, resetEffects} from './pictureFilter.js';
 import {resetScale, onButtonBiggerClick, onButtonSmallerClick} from './pictureScale.js';
 const imgUpload = document.querySelector('.img-upload');
+const imgUploadInput = imgUpload.querySelector('.img-upload__input');
+const imgUploadPreview = imgUpload.querySelector('.img-upload__preview img');
 const fileChooseButton = imgUpload.querySelector('#upload-file');
 const imgUploadPopupCloseButton = imgUpload.querySelector('#upload-cancel');
 const imgUploadPopup = imgUpload.querySelector('.img-upload__overlay');
@@ -11,6 +13,7 @@ const commentField = document.querySelector('.text__description');
 const buttonSmaller = document.querySelector('.scale__control--smaller');
 const buttonBigger = document.querySelector('.scale__control--bigger');
 const effects = document.querySelector('.img-upload__effects');
+const FILE_TYPES = ['gif', 'jpg', 'jpeg', 'png'];
 
 const isTextFieldFocused = () =>
   document.activeElement === hashtagField ||
@@ -63,6 +66,12 @@ const showImgUploadPopup = () => {
 const imgUploading = () => {
   fileChooseButton.addEventListener('change', () => {
     showImgUploadPopup();
+    const file = imgUploadInput.files[0];
+    const fileName = file.name.toLowerCase();
+    const matches = FILE_TYPES.some((it) => fileName.endsWith(it));
+    if (matches) {
+      imgUploadPreview.src = URL.createObjectURL(file);
+    }
   });
 };
 

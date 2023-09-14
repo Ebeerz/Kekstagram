@@ -9,7 +9,7 @@ const filters = document.querySelector('.img-filters');
 const standartFilterButton = filters.querySelector('#filter-default');
 const randomFilterButton = filters.querySelector('#filter-random');
 const discussedFilterButton = filters.querySelector('#filter-discussed');
-const RENDER_RELAY = 300;
+const RENDER_RELAY = 500;
 let picturesData = [];
 let activeButton = standartFilterButton;
 
